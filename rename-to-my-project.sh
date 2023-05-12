@@ -14,8 +14,8 @@ sed -i "s/FooBar/$ProjectName/g" `grep FooBar CMakeLists.txt source/ -rl`
 sed -i "s/FOOBAR/$PROJECTNAME/g" `grep FOOBAR CMakeLists.txt source/ -rl`
 sed -i "s/foobar/$projectname/g" `grep foobar CMakeLists.txt source/ -rl`
 
-mv source/cmake/target/FooBar.cmake source/cmake/target/$ProjectName.cmake
+git mv source/cmake/target/FooBar.cmake source/cmake/target/$ProjectName.cmake
 
-git rm rename-to-my-project.sh
+git mv rename-to-my-project.sh ready-to-remove-this-file.sh
 
 exit 0
