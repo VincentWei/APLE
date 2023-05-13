@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if echo "$1" | grep -q '^[A-Z][a-z][a-z0-9]*[A-Z][a-z][a-z0-9]*'; then
+if echo "$1" | grep -q '^[A-Z][A-Za-z0-9]*[A-Z][a-z][a-z0-9]*'; then
     ProjectName=$1
     PROJECTNAME=`echo $1| tr "a-z" "A-Z"`
     projectname=`echo $1| tr "A-Z" "a-z"`
     echo "Going to rename the project to $ProjectName..."
 else
-    echo "Invalid project name; must be one like 'ProjectName', 'MyProject', or 'My1Pt1'."
+    echo "Invalid project name; must be one like 'ProjectName', 'MyProject', or 'HBDInetd'."
     exit 1
 fi
 

@@ -10,7 +10,8 @@ Run `rename-to-my-project.sh` to rename the project name:
 $ ./rename-to-my-project.sh MyProject
 ```
 
-After this, this script will be removed from git.
+After this, the script will be renamed to `ready-to-remove-this-file.sh`.
+It's safe to remove the script from your repository.
 
 ## Copying
 
