@@ -15,7 +15,7 @@ It's safe to remove the script from your repository.
 
 ## Copying
 
-## For Libary
+### For Libary
 
 Copyright (C) 2020 ~ 2023 [FMSoft Technologies]
 
