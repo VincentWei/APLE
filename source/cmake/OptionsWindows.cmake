@@ -21,13 +21,13 @@ add_definitions(-DNOCRYPT)
 
 # Override headers directories
 set(WTF_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WTF/Headers)
-set(FooBar_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/FooBar/Headers)
-set(FooBar_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/FooBar/PrivateHeaders)
+set(APLEWei_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/APLEWei/Headers)
+set(APLEWei_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/APLEWei/PrivateHeaders)
 
 # Override derived sources directories
 set(WTF_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WTF/DerivedSources)
-set(FooBar_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/FooBar/DerivedSources)
+set(APLEWei_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/APLEWei/DerivedSources)
 
 # Override library types
-set(FooBar_LIBRARY_TYPE OBJECT)
-set(FooBarTestSupport_LIBRARY_TYPE OBJECT)
+set(APLEWei_LIBRARY_TYPE OBJECT)
+set(APLEWeiTestSupport_LIBRARY_TYPE OBJECT)

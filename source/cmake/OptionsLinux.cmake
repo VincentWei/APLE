@@ -1,19 +1,19 @@
 include(GNUInstallDirs)
 
-FOOBAR_OPTION_BEGIN()
+APLEWEI_OPTION_BEGIN()
 
-CALCULATE_LIBRARY_VERSIONS_FROM_LIBTOOL_TRIPLE(FOOBAR 0 0 0)
+CALCULATE_LIBRARY_VERSIONS_FROM_LIBTOOL_TRIPLE(APLEWEI 0 0 0)
 
 # These are shared variables, but we special case their definition so that we can use the
 # CMAKE_INSTALL_* variables that are populated by the GNUInstallDirs macro.
 set(LIB_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}" CACHE PATH "Absolute path to library installation directory")
 set(EXEC_INSTALL_DIR "${CMAKE_INSTALL_FULL_BINDIR}" CACHE PATH "Absolute path to executable installation directory")
-set(LIBEXEC_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBEXECDIR}/foobar" CACHE PATH "Absolute path to install executables executed by the library")
+set(LIBEXEC_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBEXECDIR}/aplewei" CACHE PATH "Absolute path to install executables executed by the library")
 set(HEADER_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}" CACHE PATH "Absolute path to header installation directory")
-set(FOOBAR_HEADER_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/foobar" CACHE PATH "Absolute path to FooBar header installation directory")
+set(APLEWEI_HEADER_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/aplewei" CACHE PATH "Absolute path to APLEWei header installation directory")
 
 add_definitions(-DBUILDING_LINUX__=1)
-add_definitions(-DFOOBAR_API_VERSION_STRING="${FOOBAR_API_VERSION}")
+add_definitions(-DAPLEWEI_API_VERSION_STRING="${APLEWEI_API_VERSION}")
 
 find_package(GLIB 2.44.0 COMPONENTS gio gio-unix)
 # find_package(HiBus 100)
@@ -91,24 +91,24 @@ endif ()
 
 # Public options specific to the HybridOS port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
-# and the option is not relevant to any other FooBar ports.
-#FOOBAR_OPTION_DEFINE(USE_SYSTEMD "Whether to enable journald logging" PUBLIC ON)
+# and the option is not relevant to any other APLEWei ports.
+#APLEWEI_OPTION_DEFINE(USE_SYSTEMD "Whether to enable journald logging" PUBLIC ON)
 
 # Private options specific to the HybridOS port. Changing these options is
-# completely unsupported. They are intended for use only by FooBar developers.
-#FOOBAR_OPTION_DEFINE(USE_ANGLE_WEBGL "Whether to use ANGLE as WebGL backend." PRIVATE OFF)
-#FOOBAR_OPTION_DEPEND(ENABLE_WEBGL ENABLE_GRAPHICS_CONTEXT_GL)
+# completely unsupported. They are intended for use only by APLEWei developers.
+#APLEWEI_OPTION_DEFINE(USE_ANGLE_WEBGL "Whether to use ANGLE as WebGL backend." PRIVATE OFF)
+#APLEWEI_OPTION_DEPEND(ENABLE_WEBGL ENABLE_GRAPHICS_CONTEXT_GL)
 
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_XML PUBLIC ${ENABLE_XML_DEFAULT})
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_HTTP PUBLIC ${ENABLE_HTTP_DEFAULT})
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_LSQL PUBLIC ${ENABLE_LSQL_DEFAULT})
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_RSQL PUBLIC ${ENABLE_RSQL_DEFAULT})
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_HIBUS PUBLIC ${ENABLE_HIBUS_DEFAULT})
-FOOBAR_OPTION_DEFAULT_PORT_VALUE(ENABLE_SSL PUBLIC ${ENABLE_SSL_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_XML PUBLIC ${ENABLE_XML_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_HTTP PUBLIC ${ENABLE_HTTP_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_LSQL PUBLIC ${ENABLE_LSQL_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_RSQL PUBLIC ${ENABLE_RSQL_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_HIBUS PUBLIC ${ENABLE_HIBUS_DEFAULT})
+APLEWEI_OPTION_DEFAULT_PORT_VALUE(ENABLE_SSL PUBLIC ${ENABLE_SSL_DEFAULT})
 
 # Finalize the value for all options. Do not attempt to use an option before
 # this point, and do not attempt to change any option after this point.
-FOOBAR_OPTION_END()
+APLEWEI_OPTION_END()
 
 if (USE_LIBSECRET)
     find_package(Libsecret)
@@ -117,7 +117,7 @@ if (USE_LIBSECRET)
     endif ()
 endif ()
 
-set(FooBar_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/src/foobar/foobar.pc)
+set(APLEWei_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/src/aplewei/aplewei.pc)
 
 # CMake does not automatically add --whole-archive when building shared objects from
 # a list of convenience libraries. This can lead to missing symbols in the final output.

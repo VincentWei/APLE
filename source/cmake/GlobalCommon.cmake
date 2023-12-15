@@ -1,10 +1,10 @@
 # -----------------------------------------------------------------------------
 # This file is included individually from various subdirectories (JSC, WTF,
-# XCore, XKit) in order to allow scripts to build only part of FOOBAR.
+# XCore, XKit) in order to allow scripts to build only part of APLEWEI.
 # We want to run this file only once.
 # -----------------------------------------------------------------------------
-if (NOT HAS_RUN_FOOBAR_COMMON)
-    set(HAS_RUN_FOOBAR_COMMON TRUE)
+if (NOT HAS_RUN_APLEWEI_COMMON)
+    set(HAS_RUN_APLEWEI_COMMON TRUE)
 
     # -----------------------------------------------------------------------------
     # Find common packages (used by all ports)
