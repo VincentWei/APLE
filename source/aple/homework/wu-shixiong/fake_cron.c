@@ -108,7 +108,7 @@ set_timerfd_value(int begin_secs, int interval_secs)
         exit(EXIT_FAILURE);
     }
 
-    // ont-shot tiemr
+    // one-shot timer
     // new.it_interval.tv_sec  = 0;
     // new.it_interval.tv_usec = 0;
     // tiemr start at 'start' seconds later
