@@ -14,15 +14,36 @@
 #define READ 0
 #define WRITE 1
 
-#define MAXLINE 4096
-int handle(int sockfd)
+#define MAXLINE 1024
+int handle_using_dup2(int sockfd)
 {
     // handle input and output
     printf("start handling bc input/output:\n");
     ssize_t n;
     char buf[MAXLINE];
     pid_t child_pid;
-    int fd;
+
+    dup2(sockfd, STDIN_FILENO);
+    dup2(sockfd, STDOUT_FILENO);
+    // spawn bc process
+    pid_t bc_pid;
+    char *const spawn_argv[] = {"bc", NULL};
+    int ret = posix_spawnp(&bc_pid, "bc", NULL, NULL, spawn_argv, NULL);
+    if (ret != 0)
+    {
+        printf("spawn bc program error: %u\n", ret);
+        exit(-1);
+    }
+}
+
+int handle_using_pipe(int sockfd){
+    // handle input and output
+    printf("start handling bc input/output:\n");
+    ssize_t n;
+    char buf[MAXLINE];
+    pid_t child_pid;
+
+    // helper to redirect stdio
     int pipeR[2]; // parent read child write
     int pipeW[2]; // parent write child read
 
@@ -154,7 +175,8 @@ int start_listen()
         {
             /* child close listening socket and process connected socket */
             close(serv_fd);
-            handle(conn_fd);
+            handle_using_dup2(conn_fd);
+            // handle_using_pipe(conn_fd);
             exit(0);
         }
         /* parent close connected socket */
