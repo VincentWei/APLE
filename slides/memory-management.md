@@ -51,7 +51,7 @@
 	
 - 示意图
 
-<img class="r-frame" style="height:auto;width:100%;" src="assets/aple-memory-layout.png" />
+<img class="r-frame" style="height:auto;width:80%;" src="assets/aple-memory-layout.png" />
 
 	
 ### 常用工具
