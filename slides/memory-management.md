@@ -39,6 +39,7 @@
    1. `alloca`，`VLA`
    1. `posix_memalign`/`aligned_alloc`
    1. `brk`/`sbrk`
+   1. `etext`/`edata`/`end`
 
 	
 ### C/C++ 进程的内存布局
