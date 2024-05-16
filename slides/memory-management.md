@@ -47,10 +47,9 @@
 - initialized data segment
 - uninitialized data segment (BSS, block started by symbol)
 - stack/stack frame
-
-	
 - 示意图
 
+	
 <img class="r-frame" style="height:auto;width:80%;" src="assets/aple-memory-layout.png" />
 
 	
