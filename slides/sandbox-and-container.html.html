@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Linux 环境高级编程：沙盒和容器</title>
+		<link rel="stylesheet" href="/dist/reset.css">
+		<link rel="stylesheet" href="/dist/reveal.css">
+		<link rel="stylesheet" href="/dist/theme/solarized.css">
+		<link rel="stylesheet" href="/css/global.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<header class="mytitle">
+				<p><a href="/aple">考鼎<span>&reg;</span>学堂：PLZS</a> / <a href="#/0">沙盒和容器</a></p>
+				<p><a href="https://work.weixin.qq.com/ca/cawcde42325deca4ec" target="_blank">报名：视频号主页 &gt; 客服</a></p>
+			</header>
+			<div class="slides">
+				<section data-markdown="gitlab/sandbox-and-container.html.md"
+						 data-separator="^\t\t\n"
+						 data-separator-vertical="^\t\n"
+						 data-separator-notes="^Note:"
+						 data-charset="utf-8">
+				</section>
+				<section id="grand-finale">
+					<h2>扫一扫</h2>
+					<img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-wechat-channel-weiym.png">
+					<!-- img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-bilibili-space-coding-log.jpg" -->
+					<img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-wechat-enterprise-lee.png">
+				</section>
+			</div>
+		</div>
+		<script src="/dist/reveal.js"></script>
+		<script src="/plugin/notes/notes.js"></script>
+		<script src="/plugin/markdown/markdown.js"></script>
+		<script src="/plugin/highlight/highlight.js"></script>
+		<script src="/js/utils/code-copy.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				width: 1024,
+				height: 768,
+				margin: 0.04,
+				hash: true,
+				slideNumber: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			}).then(() => initCodeCopy());
+		</script>
+	</body>
+</html>

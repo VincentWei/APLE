@@ -1,8 +1,8 @@
-# The Samples of LPLE by Vincent Wei
+# Advanced Programming in Linux Environment
 
-## Usage
-
-TBD...
+This repository contains the slides and samples for
+the course *Advanced Programming in Linux Environment* by
+[Vincent Wei](https://github.com/VincentWei).
 
 ## Copying
 

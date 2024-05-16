@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>计算机技术系列教程：Linux 环境高级编程</title>
+		<link rel="stylesheet" href="/dist/reset.css">
+		<link rel="stylesheet" href="/dist/reveal.css">
+		<link rel="stylesheet" href="/dist/theme/solarized.css">
+		<link rel="stylesheet" href="/css/global.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<header class="mytitle">
+				<p><a href="/">考鼎<span>&reg;</span>学堂：魏永明系列课程</a> / PLZS</p>
+				<p><a href="https://work.weixin.qq.com/ca/cawcde42325deca4ec" target="_blank">报名：视频号主页 &gt; 客服</a></p>
+			</header>
+			<div class="slides">
+				<section>
+					<section>
+						<h3>Linux 环境高级编程</h3>
+						<ol>
+							<li><a href="memory-management.html">内存管理</a></li>
+							<li><a href="file-and-file-system.html">文件和文件系统</a></li>
+							<li><a href="signal-and-process-management.html">信号和进程管理</a></li>
+							<li><a href="inter-process-communication.html">进程间通讯</a></li>
+							<li><a href="multi-threaded-programming.html">多线程编程</a></li>
+							<li><a href="multi-process-concurrent-programming.html">多进程并发编程</a></li>
+							<li><a href="network-programming.html">网络编程</a></li>
+							<li><a href="advanced-input-and-output.html">高级输入输出</a></li>
+							<li><a href="sandbox-and-container.html">沙盒和容器</a></li>
+							<li><a href="tracing-and-debugging-tools.html">跟踪及调试工具</a></li>
+						</ol>
+					</section>
+					<section>
+						<h3>课程仓库</h3>
+						<p><a target="_blank" href="https://github.com/VincentWei/APLE">GitHub.COM</a></p>
+						<p><a target="_blank" href="https://gitee.com/vincentwei7/APLE">Gitee.COM</a></p>
+					</section>
+				</section>
+				<section id="grand-finale">
+					<h2>扫一扫</h2>
+					<img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-wechat-channel-weiym.png">
+					<!-- img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-bilibili-space-coding-log.jpg" -->
+					<img class="r-frame" style="height:30vh;width:auto;" src="assets/qrcode-wechat-enterprise-lee.png">
+				</section>
+			</div>
+		</div>
+		<footer>
+			<address class="text-center">
+				<a target="_blank" href="http://beian.miit.gov.cn/">京ICP备05046847号-7</a>；
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802032210"><img src="/备案图标.png">京公网安备 11010802032210号</a>；经营许可证号：110108004781535
+			</address>
+		</footer>
+		<script src="/dist/reveal.js"></script>
+		<script src="/plugin/notes/notes.js"></script>
+		<script src="/plugin/markdown/markdown.js"></script>
+		<script src="/plugin/highlight/highlight.js"></script>
+		<script src="/js/utils/code-copy.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				width: 1024,
+				height: 768,
+				margin: 0.04,
+				hash: true,
+				slideNumber: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			}).then(() => initCodeCopy());
+		</script>
+	</body>
+</html>
