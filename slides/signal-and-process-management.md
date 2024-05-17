@@ -36,19 +36,19 @@
 
 ```console
 $ kill -l
- 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
- 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
-11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
-16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
-21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
-26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
-31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
-38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
-43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
-48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
-53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
-58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
-63) SIGRTMAX-1	64) SIGRTMAX
+ 1) SIGHUP       2) SIGINT          3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS          8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2        13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD        18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU        23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF        28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN       35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5     40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10    45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15    50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10    55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5     60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
 ```
 
 	
@@ -57,9 +57,8 @@ $ kill -l
 1. 忽略信号。有两个信号永远不能忽略：`SIGKILL` 和 `SIGSTOP`，它们为超级用户提供了杀死和停止进程的必要方法。
    - 问题：忽略硬件异常产生的信号会出现什么样的问题?
 1. 捕获信号。告诉内核在出现信号时调用我们自己定义的处理函数。比如可以通过处理 `SIGCHLD` 信号并调用 `waitpid(2)` 获得子进程的退出状态，以避免生成僵尸进程。
-1.  使用默认动作。每个信号有其默认动作。
-
-- 某些信号不能被忽略，也不能被捕获。
+1. 使用默认动作。每个信号有其默认动作。
+1. 某些信号不能被忽略，也不能被捕获。
 
 	
 ### POSIX 定义的信号
@@ -205,6 +204,8 @@ void (*signal(int signum, void (*handler)(int)))(int);
    * 在可靠信号系统调用的基础上实现，是库函数。
    * 默认的原语类似 System V，即信号发生时，信号的处置重置为默认值。
    * 如果包含 `<bsd/signal.h>`，则具有 BSD `signal()` 的原语，即发生信号时，信号处置的设置值不变。
+
+	
 - `SIG_IGN`, `SIG_DEF` 和 `SIG_ERR` 的定义：
 
 ```c
@@ -312,6 +313,8 @@ int sigsuspend (const sigset_t *mask);
 - `sigprocmask()`：用于改变进程的当前阻塞信号集.
    * `how` 可取 `SIG_BLOCK`、`SIG_UNBLOCK` 和 `SIG_MASKSET`；前两个动作分别在当前阻塞信号集中添加或删除由 `set` 指定的信号集，`SIG_MASK` 用于完全设置阻塞信号集。
    * `oldset` 非空时，可返回先前的设置。
+
+	
 - `sigpending()`：用于检验挂起的信号。
 - `sigsuspend()`： 用于在接收到某个信号之前, 临时用 `mask` 替换进程的信号掩码，并暂停进程执行。
     * 该函数返回后将恢复调用之前的信号掩码。
@@ -386,8 +389,8 @@ unsigned int sleep (unsigned int seconds);
    * 经过指定的时间之后，`sleep()` 返回。
    * 在返回之前如果接收到信号，则 `sleep()` 返回剩余的秒数。
 
-		
-## 线程中的信号处理
+	
+### 线程中的信号处理
 
 - 按照 POSIX 标准，异步（外部）信号发送到整个进程。
 - 所有线程共享同一个设置，即通过 `sigaction()` 设置的线程处置方法。
@@ -439,10 +442,6 @@ int timerfd_gettime(int fd, struct itimerspec *curr_value);
 	
 ### 等待子进程退出
 
-- 进程的退出状态必须用 `wait()` 函数由父进程获取，否则形成僵尸进程。
-- `wait()` 等待某个子进程退出；`waitpid()` 可等待指定的子进程退出，可指定 `WNOHANG` 选项而不阻塞调用进程的执行。
-- `wait3()` 和 `wait4()` 分别是 `wait()` 和 `waitpid()` 的扩展调用，它们可以返回子进程的资源使用情况。
-
 ```c
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -451,7 +450,6 @@ pid_t wait (int *status)
 pid_t waitpid (pid_t pid, int *status, int options);
 
 #define _USE_BSD
-
 #include <sys/types.h>
 #include <sys/resource.h>
 #include <sys/wait.h>
@@ -459,6 +457,10 @@ pid_t waitpid (pid_t pid, int *status, int options);
 pid_t wait3 (int *status, int options, struct rusage *rusage);
 pid_t wait4 (pid_t pid, int *status, int options, struct rusage *rusage);
 ```
+
+- 进程的退出状态必须用 `wait()` 函数由父进程获取，否则形成僵尸进程。
+- `wait()` 等待某个子进程退出；`waitpid()` 可等待指定的子进程退出，可指定 `WNOHANG` 选项而不阻塞调用进程的执行。
+- `wait3()` 和 `wait4()` 分别是 `wait()` 和 `waitpid()` 的扩展调用，它们可以返回子进程的资源使用情况。
 
 	
 ### 执行程序
@@ -518,7 +520,6 @@ pid_t wait4 (pid_t pid, int *status, int options, struct rusage *rusage);
 		
 ## 作业
 
-1. 信号及进程管理
 1. 分别使用 `setitimer()`/`alarm()`，`timerfd_create()` 、应用层轮询系统时间的方式实现一个可以设置多个定时器的模块。
 1. 编写一个简单的守护进程程序，可替代 `cron` 的功能：
    - 读取指定配置文件，按给定的时间周期执行配置文件中指定的程序。
